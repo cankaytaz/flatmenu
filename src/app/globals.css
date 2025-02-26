@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  
+  /* Fluid spacing units */
+  --space-unit: clamp(1rem, 0.875rem + 0.625vw, 1.5rem);
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-sm: calc(0.75 * var(--space-unit));
+  --space-md: calc(1.25 * var(--space-unit));
+  --space-lg: calc(2 * var(--space-unit));
+  --space-xl: calc(3.25 * var(--space-unit));
+  
+  /* Touch target minimum size */
+  --min-touch-target: 44px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 17, 24, 39;
+  }
+}
+
+/* Base styles */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  height: -webkit-fill-available;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Touch target sizes */
+button, 
+a, 
+input[type="button"], 
+input[type="submit"],
+input[type="reset"] {
+  min-height: var(--min-touch-target);
+  min-width: var(--min-touch-target);
+}
+
+/* Fluid spacing utility classes */
+@layer utilities {
+  .space-fluid {
+    padding: var(--space-unit);
+  }
+  
+  .space-fluid-x {
+    padding-left: var(--space-unit);
+    padding-right: var(--space-unit);
+  }
+  
+  .space-fluid-y {
+    padding-top: var(--space-unit);
+    padding-bottom: var(--space-unit);
+  }
+}
+
+/* Responsive container */
+.responsive-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-unit);
+  padding-right: var(--space-unit);
+  max-width: min(100% - 2rem, 1920px);
+}
+
+/* Grid system */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-unit);
+}
